@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Base --- */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: "Inter", sans-serif;
+    @apply overflow-x-hidden text-base text-gray-800 font-normal;
+  }
+
+  label {
+    @apply inline-block text-sm;
+  }
+
+  input,
+  select,
+  textarea {
+    @apply w-full px-2.5 py-1.5 rounded-md;
+  }
+
+  h1 {
+    @apply capitalize text-3xl font-medium text-gray-800;
+  }
+
+  /* Table */
+
+  table:not(.tiptap table),
+  thead:not(.tiptap thead),
+  tbody:not(.tiptap tbody),
+  tfoot:not(.tiptap tfoot) {
+    @apply block w-full;
+  }
+
+  table:not(.tiptap table) {
+    @apply overflow-hidden w-full;
+
+    tr {
+      @apply flex w-full border-b last:border-b-0;
+    }
+
+    thead tr {
+      @apply bg-gray-100 rounded-t-2xl border-white;
+    }
+
+    th {
+      @apply font-semibold text-center self-center border-r last:border-r-0;
+    }
+
+    td {
+      @apply border-r text-center self-center last:border-r-0;
+    }
+  }
+}
+
+/* --- Components --- */
+
+@layer components {
+  .not-visible {
+    visibility: hidden;
+  }
+
+  .answer-dropzone {
+    @apply text-center font-bold border-dashed;
+  }
+
+  .answer-input {
+    @apply w-36;
+  }
+
+  .answer-input,
+  .answer-dropzone {
+    @apply inline-block min-w-36 max-w-xl h-6 px-2 border border-gray-500 text-dark rounded outline-none placeholder:text-center placeholder:text-dark placeholder:font-bold focus:border-2 focus:border-blue-500;
+  }
+
+  /* Editor */
+
+  .text-editor {
+    ul {
+      @apply list-disc pl-5;
+    }
+
+    ol {
+      @apply list-decimal pl-5;
+    }
+
+    blockquote {
+      @apply relative border-l-2 border-blue-500 pl-3.5 bg-blue-50 rounded-r;
+    }
+
+    blockquote::after {
+      @apply content-["”"] absolute top-0.5 right-2 text-blue-500 text-lg font-semibold;
+    }
+
+    code {
+      @apply inline-block bg-white p-2.5 border rounded-md;
+    }
+
+    img {
+      @apply bg-gray-200 object-contain border-2 border-transparent transition-colors duration-200;
+    }
+
+    a {
+      @apply text-blue-500;
+    }
+  }
+
+  .node-answer-input {
+    @apply inline-block h-auto;
+  }
+
+  /* Button */
+  .btn {
+    @apply flex items-center justify-center h-9 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .editor-page {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+.ProseMirror {
+  @apply !outline-none !border-none whitespace-pre-wrap;
+  word-wrap: break-word;
+}
+
+.ProseMirror-separator {
+  display: none;
+}
+
+.ProseMirror-selectednode img {
+  @apply border-blue-500;
+}
+
+/* --- Utilities --- */
+
+@layer utilities {
+  .container {
+    @apply max-w-[1480px] w-full px-5 mx-auto;
+  }
+}
+
+a.active {
+  @apply !bg-gray-100 text-blue-500;
+}
+
+/* scrolls */
+:is(.scroll-x-primary, .scroll-y-primary)::-webkit-scrollbar {
+  @apply bg-gray-200 rounded-full;
+}
+
+:is(.scroll-x-primary, .scroll-y-primary)::-webkit-scrollbar-thumb {
+  @apply bg-blue-500/70 rounded-full;
+}
+
+:is(.scroll-x-primary, .scroll-y-primary):hover::-webkit-scrollbar-thumb {
+  @apply bg-blue-500;
+}
+
+.scroll-x-primary::-webkit-scrollbar {
+  @apply h-1;
+}
+
+.scroll-y-primary::-webkit-scrollbar {
+  @apply w-1;
+}
+
+.hidden-scroll::-webkit-scrollbar {
+  @apply hidden;
+}
