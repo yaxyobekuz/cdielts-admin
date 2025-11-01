@@ -12,7 +12,7 @@ const navlinks = [
   {
     label: "Ustozlar",
     link: "teachers",
-    allowed: ["owner", "admin"],
+    allowed: [],
   },
   {
     label: "Testlar",
@@ -37,7 +37,7 @@ const navlinks = [
   {
     label: "Statistika",
     link: "statistics/weekly",
-    allowed: ["owner", "admin"],
+    allowed: [],
   },
   {
     label: "Asboblar",

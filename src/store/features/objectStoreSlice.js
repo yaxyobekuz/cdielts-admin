@@ -10,6 +10,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // Initial state - stores different collections of items by category
 const initialState = {
   links: {},
+  users: {},
   tests: {},
   coords: {},
   pdfFile: {},
