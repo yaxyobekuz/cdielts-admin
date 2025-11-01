@@ -15,6 +15,7 @@ import { Toaster } from "react-hot-toast";
 import Test from "./pages/Test";
 import Home from "./pages/Home";
 import Link from "./pages/Link";
+import User from "./pages/User";
 import Links from "./pages/Links";
 import Tests from "./pages/Tests";
 import Login from "./pages/Login";
@@ -87,7 +88,7 @@ const App = () => {
           {/* Users */}
           <Route path="users" element={<Outlet />}>
             <Route index element={<Users />} />
-            {/* <Route path=":userId" element={<User />} /> */}
+            <Route path=":userId" element={<User />} />
           </Route>
 
           {/* Templates */}

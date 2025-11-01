@@ -11,7 +11,7 @@ import { useCallback, useEffect } from "react";
 import useArrayStore from "@/hooks/useArrayStore";
 
 // Router
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 // Components
 import Nav from "@/components/Nav";
@@ -230,7 +230,7 @@ const UserItem = ({
   firstName = "Foydalanuvchi",
 }) => {
   return (
-    <div className="flex flex-col gap-3.5 justify-between relative w-full min-h-52 bg-gray-100 rounded-3xl p-5">
+    <div className="flex flex-col gap-3.5 justify-between relative w-full min-h-52 bg-gray-100 rounded-3xl p-5 transition-all duration-200 hover:bg-gray-50">
       {/* Profile */}
       <div className="flex items-center gap-3.5">
         <ProfilePhoto user={{ _id: id, firstName, lastName, avatar }} />
@@ -291,6 +291,12 @@ const UserItem = ({
           </p>
         </div>
       </div>
+
+      {/* Link */}
+      <Link
+        to={`/users/${id}`}
+        className="block absolute z-0 inset-0 size-full rounded-3xl"
+      />
     </div>
   );
 };
