@@ -263,11 +263,22 @@ const processAnswersData = (module, answers, correctAnswers) => {
       return userAnswer === correctAnswer;
     })();
 
+    // Partial scoring for checkbox-group
     if (typeof correctAnswers[module][key] === "object" && isNaN(Number(key))) {
-      const totalAnswers = correctAnswers[module][key]?.length || 1;
-      isCorrect
-        ? (trueAnswers = totalAnswers + trueAnswers)
-        : (wrongAnswers = totalAnswers + wrongAnswers);
+      // Count how many correct answers user got
+      const normalize = (str) => str?.trim()?.toLowerCase()?.replace(/[.,!?;:]$/g, "") || "";
+      const normalizedCorrect = correctAnswers[module][key].map(normalize);
+      const normalizedUser = (Array.isArray(answers[module][key]) ? answers[module][key] : []).map(normalize);
+      
+      let matchCount = 0;
+      normalizedUser.forEach((answer) => {
+        if (normalizedCorrect.includes(answer)) {
+          matchCount++;
+        }
+      });
+      
+      trueAnswers += matchCount;
+      wrongAnswers += (correctAnswers[module][key]?.length || 0) - matchCount;
     } else {
       isCorrect ? trueAnswers++ : wrongAnswers++;
     }
